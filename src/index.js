@@ -1,7 +1,6 @@
-// get date and time
+// Get date and time
 
 function formatTime(timestamp) {
-  // calculate the time (from API dt comes in miliseconds since 1970)
   let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
@@ -71,10 +70,21 @@ function showWeather(response) {
   );
 }
 
-let city = "Tokyo";
-let units = "metric";
+function search(city) {
+  let units = "metric";
+  let apiKey = "aceadeb80a4efbf529fde452b5da3c54";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
-let apiKey = "aceadeb80a4efbf529fde452b5da3c54";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showWeather);
+}
 
-axios.get(apiUrl).then(showWeather);
+// update city on form submit
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#search-input");
+  search(cityInput.value);
+}
+
+let form = document.querySelector("#search-city");
+form.addEventListener("submit", handleSubmit);
