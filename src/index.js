@@ -1,18 +1,55 @@
 // get date and time
 
-let currentTime = new Date();
-let year = currentTime.getUTCFullYear();
-let hours = currentTime.getHours();
-let minutes = currentTime.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
+function formatTime(timestamp) {
+  // calculate the time (from API dt comes in miliseconds since 1970)
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
 }
 
-let timeElement = document.querySelector("#time");
-timeElement.innerHTML = `${hours}:${minutes} AM`;
+function formatDate() {
+  let weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
-let dateElement = document.querySelector("#date");
-dateElement.innerHTML = `Friday, 27 Dec 2021`;
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  let date = new Date();
+  let year = date.getUTCFullYear();
+  let month = months[date.getMonth()];
+  let day = weekdays[date.getDay()];
+  let calendarDay = date.getDate();
+
+  return `${day}, ${calendarDay} ${month} ${year}`;
+}
+
+document.querySelector("#date").innerHTML = formatDate();
 
 // integrate with Open Weather API
 
@@ -29,9 +66,12 @@ function showWeather(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+  document.querySelector("#time").innerHTML = formatTime(
+    response.data.dt * 1000
+  );
 }
 
-let city = "Lisbon";
+let city = "Tokyo";
 let units = "metric";
 
 let apiKey = "aceadeb80a4efbf529fde452b5da3c54";

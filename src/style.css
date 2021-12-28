@@ -29,6 +29,9 @@ h1 {
 h2 {
   font-size: clamp(3rem, 6vw, 8rem);
   line-height: 100%;
+}
+
+h2::first-letter {
   text-transform: capitalize;
 }
 
