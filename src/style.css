@@ -17,18 +17,19 @@ body {
   justify-content: space-between;
 
   background-color: cadetblue;
-  padding: clamp(1rem, 4vw, 8rem);
+  padding: clamp(1rem, 2vw, 4rem);
 }
 
 h1 {
-  font-size: clamp(8rem, 20vw, 16rem);
+  font-size: clamp(6rem, 10vw, 12rem);
   font-weight: 600;
   line-height: 100%;
 }
 
 h2 {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(3rem, 6vw, 8rem);
   line-height: 100%;
+  text-transform: capitalize;
 }
 
 a {
@@ -77,7 +78,7 @@ input[type="search"] {
   width: 100%;
   font-family: "Readex Pro", sans-serif;
   font-weight: 600;
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(3rem, 6vw, 8rem);
   border: none;
   padding-bottom: 8px;
   background: transparent;
@@ -136,7 +137,6 @@ main {
 .weather-info {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .temperature {
@@ -150,12 +150,15 @@ main {
 
 .description {
   display: flex;
-  gap: 24px;
+  gap: clamp(0.5rem, 2vw, 4rem);
   align-items: center;
+  margin-bottom: 16px;
 }
 
 span#weather-icon {
-  font-size: 80px;
+  position: relative;
+  top: 2px;
+  font-size: clamp(3rem, 6vw, 8rem);
 }
 
 .temperature-details {

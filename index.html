@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Weather App</title>
   </head>
 
@@ -34,7 +35,8 @@
     <main>
       <div class="weather-info">
         <div class="temperature">
-          <h1 class="number">29°</h1>
+          <h1 id="number"></h1>
+          <h1>°</h1>
           <div class="units">
             <span id="celsius">°C</span> |
             <span id="fahrenheit">°F</span>
@@ -45,15 +47,19 @@
           <span class="material-icons" id="weather-icon">cloud</span>
         </div>
         <div class="temperature-details">
-          <p><strong>Precipitation: </strong><span>0</span>%</p>
-          <p><strong>Humidity: </strong><span>56</span>%</p>
-          <p><strong>Wind: </strong><span>17</span>km/h</p>
+          <p>
+            <strong>Precipitation: </strong><span id="precipitation">0</span>%
+          </p>
+          <p><strong>Humidity: </strong><span id="humidity">56</span>%</p>
+          <p><strong>Wind: </strong><span id="wind"></span>km/h</p>
         </div>
       </div>
 
       <div class="location">
-        <h3>New York, USA</h3>
-        <p id="time">Friday 2021, 05:00:00 AM</p>
+        <h3 id="city"></h3>
+        <br />
+        <p id="date"></p>
+        <p id="time"></p>
       </div>
     </main>
 
