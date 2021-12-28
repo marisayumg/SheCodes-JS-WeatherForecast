@@ -5,18 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/style.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <title>Weather App</title>
   </head>
+
   <body>
-    <div class="container">
-      <div class="intro">
-        <header>
-            <p>A Weather App</p>
-            <p><a href="">Open-source code</a> by Marisa Gama</p>
-        </header>
-        <div>
+    <header>
+      <div class="title">
+        <p>A Weather App</p>
+        <p><a href="">Open-source code</a> by Marisa Gama</p>
+      </div>
+      <div>
         <form class="search-city">
           <input
             type="search"
@@ -26,50 +28,44 @@
           />
           <input type="submit" value="Search" />
         </form>
-        <hr />
       </div>
+    </header>
 
-      </div>
+    <main>
       <div class="weather-info">
-        <div class="weather">
-          <div class="main">
-            <div class="temperature">
-              <h1 class="number">29°</h1>
-              <p>
-                <div class="units">
-                <span id="celsius">°C</span> |
-                <span id="fahrenheit">°F</span>
-              </p>
-              </div>
-            </div>
-            <div class="description">
-            <h2 id="description">Overcast</h2>
-            <span class="material-icons" id="weather-icon">cloud</span>     
-            </div>
-          </div>
-          <div class="temperature-details">
-            <p><strong>Precipitation: </strong><span>0</span>%</p>
-            <p><strong>Humidity: </strong><span>56</span>%</p>
-            <p><strong>Wind: </strong><span>17</span>km/h</p>
+        <div class="temperature">
+          <h1 class="number">29°</h1>
+          <div class="units">
+            <span id="celsius">°C</span> |
+            <span id="fahrenheit">°F</span>
           </div>
         </div>
-        <div class="location">
-          <h3>New York, USA</h3>
-          <p id="time">Friday 2021, 05:00:00 AM</p>
+        <div class="description">
+          <h2 id="description">Overcast</h2>
+          <span class="material-icons" id="weather-icon">cloud</span>
+        </div>
+        <div class="temperature-details">
+          <p><strong>Precipitation: </strong><span>0</span>%</p>
+          <p><strong>Humidity: </strong><span>56</span>%</p>
+          <p><strong>Wind: </strong><span>17</span>km/h</p>
         </div>
       </div>
 
-      <div class="forecast">
-        <hr />
-        <ul>
-          <li>Monday<br />20°</li>
-          <li>Tuesday<br />19°</li>
-          <li>Wednesday<br />17°</li>
-          <li>Thursday<br />21°</li>
-          <li>Friday<br />23°</li>
-        </ul>
+      <div class="location">
+        <h3>New York, USA</h3>
+        <p id="time">Friday 2021, 05:00:00 AM</p>
       </div>
-    </div>
+    </main>
+
+    <footer class="forecast">
+      <ul>
+        <li>Monday<br />20°</li>
+        <li>Tuesday<br />19°</li>
+        <li>Wednesday<br />17°</li>
+        <li>Thursday<br />21°</li>
+        <li>Friday<br />23°</li>
+      </ul>
+    </footer>
   </body>
   <script src="src/index.js"></script>
 </html>
