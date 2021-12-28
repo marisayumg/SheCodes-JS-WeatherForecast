@@ -53,12 +53,10 @@ document.querySelector("#date").innerHTML = formatDate();
 // integrate with Open Weather API
 
 function showWeather(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#number").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  celsiusTemperature = Math.round(response.data.main.temp);
+  document.querySelector("#number").innerHTML = Math.round(celsiusTemperature);
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].description;
+    response.data.weather[0].main;
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.main.humidity
   );
@@ -68,6 +66,7 @@ function showWeather(response) {
   document.querySelector("#time").innerHTML = formatTime(
     response.data.dt * 1000
   );
+  document.querySelector("#city").innerHTML = response.data.name;
 }
 
 function search(city) {
@@ -88,3 +87,32 @@ function handleSubmit(event) {
 
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", handleSubmit);
+
+// change between Celsius and Fahrenheit
+
+function showFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement = document.querySelector("#number");
+  temperatureElement.innerHTML = fahrenheitTemperature;
+}
+
+function showCelsius(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  let temperatureElement = document.querySelector("#number");
+  temperatureElement.innerHTML = celsiusTemperature;
+}
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", showFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", showCelsius);
+
+search("Tokyo");

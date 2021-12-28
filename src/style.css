@@ -37,6 +37,7 @@ h2::first-letter {
 
 a {
   color: #000;
+  cursor: pointer;
 }
 
 a:hover {
@@ -151,6 +152,17 @@ main {
   margin-left: -32px;
 }
 
+.units a {
+  text-decoration: none;
+}
+
+.units a.active {
+  text-decoration: none;
+  font-weight: 800;
+  opacity: 1;
+  cursor: default;
+}
+
 .description {
   display: flex;
   gap: clamp(0.5rem, 2vw, 4rem);
@@ -167,15 +179,6 @@ span#weather-icon {
 .temperature-details {
   display: flex;
   gap: 40px;
-}
-
-#fahrenheit {
-  text-decoration: line-through;
-  cursor: pointer;
-}
-
-#fahrenheit:hover {
-  text-decoration: none;
 }
 
 .location {
