@@ -192,7 +192,7 @@ footer {
   border-top: 2px solid #000;
 }
 
-.forecast ul {
+.weather-forecast ul {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
