@@ -170,10 +170,8 @@ main {
   margin-bottom: 16px;
 }
 
-span#weather-icon {
-  position: relative;
-  top: 2px;
-  font-size: clamp(3rem, 6vw, 8rem);
+#weather-icon {
+  width: 64px;
 }
 
 .temperature-details {

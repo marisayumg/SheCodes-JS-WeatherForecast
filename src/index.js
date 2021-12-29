@@ -67,6 +67,12 @@ function showWeather(response) {
     response.data.dt * 1000
   );
   document.querySelector("#city").innerHTML = response.data.name;
+  document
+    .querySelector("#weather-icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
 }
 
 function search(city) {
@@ -84,9 +90,6 @@ function handleSubmit(event) {
   let cityInput = document.querySelector("#search-input");
   search(cityInput.value);
 }
-
-let form = document.querySelector("#search-city");
-form.addEventListener("submit", handleSubmit);
 
 // change between Celsius and Fahrenheit
 
@@ -114,5 +117,8 @@ fahrenheitLink.addEventListener("click", showFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showCelsius);
+
+let form = document.querySelector("#search-city");
+form.addEventListener("submit", handleSubmit);
 
 search("Tokyo");
