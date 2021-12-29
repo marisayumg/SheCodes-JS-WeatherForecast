@@ -16,7 +16,9 @@
   <body>
     <header>
       <div class="title">
-        <p>A Weather App</p>
+        <p class="col1">A Weather App</p>
+        <p class="col2">Data on 200,000+ cities worldwide</p>
+        <p class="col3"><a href="https://github.com/marisayumg/vanilla-weather-app" target="_blank">Open-source code</a> by Marisa Gama</p>
       </div>
       <div>
         <form class="search-city" id="search-city">
@@ -33,38 +35,33 @@
     </header>
 
     <main>
+      <div class="location">
+        <h3 id="city"></h3>
+        <p id="time">Last updated:</p>
+        <p id="date"></p>
+      </div>
+
       <div class="weather-info">
         <div class="temperature">
           <h1 id="number"></h1>
-          <h1>°</h1>
-          <div class="units">
-            <a href="#" id="celsius" class="active">°C</a> |
-            <a href="#" id="fahrenheit">°F</a>
-          </div>
+          <h1>°C</h1>
+           <div class="description">
+          <h1 id="description"></h1>
         </div>
-        <div class="description">
-          <h2 id="description">Overcast</h2>
         </div>
         <div class="temperature-details">
+          <img src="" id="weather-icon"></img>
           <p><strong>Humidity: </strong><span id="humidity">56</span>%</p>
           <p><strong>Wind: </strong><span id="wind"></span>km/h</p>
         </div>
       </div>
-
-      <div class="location">
-        <img src="" id="weather-icon"></img>
-        <h3 id="city"></h3>
-        <br />
-        <p>Last updated: <span id="time"></span></p>
-        <p id="date"></p>
-      </div>
+      
+      <div class="col3"></div>
     </main>
 
-    <footer class="weather-forecast">
-      <ul>
-<p><a href="https://github.com/marisayumg/vanilla-weather-app" target="_blank">Open-source code</a> by Marisa Gama</p>
-      </ul>
+    <footer id="forecast">
     </footer>
+    
   </body>
   <script src="src/index.js"></script>
 </html>

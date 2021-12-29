@@ -8,31 +8,33 @@
 
 body {
   font-family: "Readex Pro", sans-serif;
-  font-size: 16px;
+  font-size: clamp(0.875rem, 2vw, 1rem);
   line-height: 100%;
 
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 1vw;
 
   background-color: cadetblue;
   padding: clamp(1rem, 2vw, 4rem);
 }
 
 h1 {
-  font-size: clamp(6rem, 10vw, 12rem);
-  font-weight: 600;
+  font-size: clamp(2rem, 8vw, 8rem);
+  font-weight: 800;
   line-height: 100%;
-}
-
-h2 {
-  font-size: clamp(3rem, 6vw, 8rem);
-  line-height: 100%;
+  margin-bottom: -16px;
 }
 
 h2::first-letter {
   text-transform: capitalize;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  line-height: 120%;
 }
 
 a {
@@ -54,14 +56,33 @@ header {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   justify-content: space-between;
   font-size: 14px;
+  margin-bottom: clamp(0, 1.5vw, 2rem);
 }
 
 .title {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  gap: 16px;
+}
+
+.col1 {
+  width: 100%;
+  flex: 2;
+}
+
+.col2 {
+  width: 100%;
+  flex: 3;
+}
+
+.col3 {
+  width: 100%;
+  flex: 2;
+  text-align: right;
 }
 
 .author {
@@ -81,8 +102,8 @@ header {
 input[type="search"] {
   width: 100%;
   font-family: "Readex Pro", sans-serif;
-  font-weight: 600;
-  font-size: clamp(3rem, 6vw, 8rem);
+  font-size: clamp(2rem, 8vw, 8rem);
+  font-weight: 800;
   border: none;
   padding-bottom: 8px;
   background: transparent;
@@ -93,14 +114,11 @@ input:focus {
 }
 
 input[type="submit"] {
-  display: inline-block;
-  height: 8px;
+  display: block;
   text-transform: uppercase;
-  line-height: 100%;
-  background: transparent;
-  border: 1px solid #000;
-  border-radius: 40px;
-  padding: 20px 32px 32px 32px;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 2vw 3vw;
 }
 
 input[type="submit"]:hover {
@@ -109,8 +127,7 @@ input[type="submit"]:hover {
 }
 
 ::placeholder {
-  opacity: 0.3;
-  color: #000;
+  color: rgba(0, 0, 0, 0.2);
 }
 
 input[type="text"]::-ms-clear {
@@ -134,8 +151,8 @@ input[type="search"]::-webkit-search-results-decoration {
 
 main {
   display: flex;
-  flex-direction: row;
-  gap: 10%;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 6rem);
 }
 
 .weather-info {
@@ -148,53 +165,120 @@ main {
   align-items: baseline;
 }
 
-.units {
-  margin-left: -32px;
-}
-
-.units a {
-  text-decoration: none;
-}
-
-.units a.active {
-  text-decoration: none;
-  font-weight: 800;
-  opacity: 1;
-  cursor: default;
-}
-
 .description {
   display: flex;
-  gap: clamp(0.5rem, 2vw, 4rem);
   align-items: center;
   margin-bottom: 16px;
+  margin-left: 2vw;
 }
 
 #weather-icon {
-  width: 64px;
+  width: 56px;
 }
 
 .temperature-details {
   display: flex;
-  gap: 40px;
+  align-items: center;
+  gap: 24px;
 }
 
 .location {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 24px;
 }
 
 /* Footer and forecast */
 
-footer {
-  border-top: 2px solid #000;
-}
-
-.weather-forecast ul {
+footer ul {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin: 16px 40px 8px 0;
+  gap: 8px;
+}
+
+footer .forecast-day {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+footer .day-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+footer li {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 24px 8px 24px;
+  border-right: 1px solid #000;
+  text-align: center;
+}
+
+footer li:first-child {
+  border-left: 1px solid #000;
+}
+
+.forecast-date,
+.forecast-temperature-max {
+  font-weight: 800;
+}
+
+footer img {
+  margin: 0 auto;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 700px) {
+  header {
+    gap: 40px;
+  }
+
+  header .col1 {
+    flex: 1;
+  }
+  header .col2 {
+    display: none;
+  }
+  header .col2 {
+    display: 2;
+  }
+
+  footer ul {
+    flex-direction: column;
+  }
+
+  footer li {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-bottom: 1px solid #000;
+    padding: 0;
+    padding-bottom: 8px;
+  }
+
+  footer li:first-child {
+    border: none;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+
+  footer .forecast-date {
+    text-align: left;
+    width: 40px;
+  }
+
+  footer .day-icon {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
 }

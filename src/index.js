@@ -10,13 +10,11 @@ function formatTime(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `${hours}:${minutes}`;
-}
 
-function formatDate() {
-  let weekdays = [
+  let day = date.getDay();
+
+  let days = [
     "Sunday",
-    "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
@@ -24,6 +22,10 @@ function formatDate() {
     "Saturday",
   ];
 
+  return `${days[day]}, ${hours}:${minutes}`;
+}
+
+function formatDate() {
   let months = [
     "January",
     "February",
@@ -42,13 +44,21 @@ function formatDate() {
   let date = new Date();
   let year = date.getUTCFullYear();
   let month = months[date.getMonth()];
-  let day = weekdays[date.getDay()];
   let calendarDay = date.getDate();
 
-  return `${day}, ${calendarDay} ${month} ${year}`;
+  return `${calendarDay} ${month} ${year}`;
 }
 
 document.querySelector("#date").innerHTML = formatDate();
+
+// integrate with OneCall API for 5 day forecast
+
+function getForecast(coordinates) {
+  let apiKey = "aceadeb80a4efbf529fde452b5da3c54";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
 
 // integrate with Open Weather API
 
@@ -66,13 +76,17 @@ function showWeather(response) {
   document.querySelector("#time").innerHTML = formatTime(
     response.data.dt * 1000
   );
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector(
+    "#city"
+  ).innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   document
     .querySelector("#weather-icon")
     .setAttribute(
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -89,36 +103,85 @@ function handleSubmit(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#search-input");
   search(cityInput.value);
+  cityInput.value = "";
 }
 
 // change between Celsius and Fahrenheit
 
-function showFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#number");
-  temperatureElement.innerHTML = fahrenheitTemperature;
-}
+// function showFahrenheit(event) {
+//   event.preventDefault();
+//   let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+//   celsiusLink.classList.remove("active");
+//   fahrenheitLink.classList.add("active");
+//   let temperatureElement = document.querySelector("#number");
+//   temperatureElement.innerHTML = fahrenheitTemperature;
+// }
 
-function showCelsius(event) {
-  event.preventDefault();
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  let temperatureElement = document.querySelector("#number");
-  temperatureElement.innerHTML = celsiusTemperature;
-}
+// function showCelsius(event) {
+//   event.preventDefault();
+//   fahrenheitLink.classList.remove("active");
+//   celsiusLink.classList.add("active");
+//   let temperatureElement = document.querySelector("#number");
+//   temperatureElement.innerHTML = celsiusTemperature;
+// }
 
-let celsiusTemperature = null;
+// let celsiusTemperature = null;
 
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", showFahrenheit);
+// let fahrenheitLink = document.querySelector("#fahrenheit");
+// fahrenheitLink.addEventListener("click", showFahrenheit);
 
-let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", showCelsius);
+// let celsiusLink = document.querySelector("#celsius");
+// celsiusLink.addEventListener("click", showCelsius);
 
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", handleSubmit);
 
+// display forecast
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<ul>`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
+    <li>
+      <div class="day-icon">
+        <span class="forecast-date">${formatDay(forecastDay.dt)}</span>
+        <img src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png" alt="" width="48"/>
+      </div>
+      <p class="forecast-temperatures">
+        <span class="forecast-temperature-max">${Math.round(
+          forecastDay.temp.max
+        )}°</span>
+        /
+        <span class="forecast-temperature-min">${Math.round(
+          forecastDay.temp.min
+        )}°</span>
+      </p>
+    </li>
+  `;
+    }
+  });
+  forecastHTML = forecastHTML + "</ul>";
+  forecastElement.innerHTML = forecastHTML;
+}
+
+// format dt into days e.g. "Thursday"
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+// Call a city to display as default on page load
 search("Tokyo");
