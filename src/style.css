@@ -17,8 +17,9 @@ body {
   justify-content: space-between;
   gap: 1vw;
 
-  background-color: cadetblue;
+  background: white;
   padding: clamp(1rem, 2vw, 4rem);
+  transition: all 500ms ease-in;
 }
 
 h1 {
@@ -28,11 +29,7 @@ h1 {
   margin-bottom: -16px;
 }
 
-h2::first-letter {
-  text-transform: capitalize;
-}
-
-h3 {
+h2 {
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   line-height: 120%;
 }
@@ -170,6 +167,7 @@ main {
   align-items: center;
   margin-bottom: 16px;
   margin-left: 2vw;
+  text-transform: lowercase;
 }
 
 #weather-icon {

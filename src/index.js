@@ -65,8 +65,7 @@ function getForecast(coordinates) {
 function showWeather(response) {
   celsiusTemperature = Math.round(response.data.main.temp);
   document.querySelector("#number").innerHTML = Math.round(celsiusTemperature);
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.main.humidity
   );
@@ -85,6 +84,35 @@ function showWeather(response) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+
+  let description = document.querySelector("#description");
+  description.innerHTML = response.data.weather[0].main;
+
+  function changeBackground() {
+    if (description.innerHTML === "Clear") {
+      document.body.style.background = "#FFD774";
+    }
+    if (description.innerHTML === "Clouds") {
+      document.body.style.background = "#92B3C2";
+    }
+    if (description.innerHTML === "Rain") {
+      document.body.style.background = "#0E86D4";
+    }
+    if (description.innerHTML === "Mist") {
+      document.body.style.background = "#C3D6DB";
+    }
+    if (description.innerHTML === "Snow") {
+      document.body.style.background = "white";
+    }
+    if (description.innerHTML === "Drizzle") {
+      document.body.style.background = "#68BBE3";
+    }
+    if (description.innerHTML === "Thunderstorm") {
+      document.body.style.background = "#9B9896";
+    }
+  }
+
+  changeBackground();
 
   getForecast(response.data.coord);
 }
