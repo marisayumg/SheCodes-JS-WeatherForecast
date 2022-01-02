@@ -102,7 +102,10 @@ function showWeather(response) {
       document.body.style.background = "#C3D6DB";
     }
     if (description.innerHTML === "Snow") {
-      document.body.style.background = "white";
+      document.body.style.background = "#fff";
+    }
+    if (description.innerHTML === "Fog") {
+      document.body.style.background = "#BBC4C2";
     }
     if (description.innerHTML === "Drizzle") {
       document.body.style.background = "#68BBE3";
