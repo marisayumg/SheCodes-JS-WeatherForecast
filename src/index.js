@@ -110,6 +110,9 @@ function showWeather(response) {
     if (description.innerHTML === "Thunderstorm") {
       document.body.style.background = "#9B9896";
     }
+    if (description.innerHTML === "Haze") {
+      document.body.style.background = "#B9B7BD";
+    }
   }
 
   changeBackground();
