@@ -1,4 +1,4 @@
-# vanilla-weather-app
+# vanilla-javascript-weather-app
 
 
 A weather app with the following features:
