@@ -1,14 +1,15 @@
-Vanilla javascript weather app
+## Vanilla Javascript Weather App
 
+Link here:
 https://myg-vanilla-weather-app.netlify.app/
 
 
-## Description ##
+## Description
 
 A weather app built using vanilla javascript. This was my final project created for the SheCodes Plus course.
 
 
-## Requirements ##
+## Requirements
 
 This weather app needs the following features:
 
