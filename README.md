@@ -5,7 +5,7 @@ See this project [live here](https://myg-js-weather-app.netlify.app).
 
 ## Description
 
-A weather app built using vanilla javascript. This was my final project created for the SheCodes Plus course.
+A weather app built using vanilla javascript. This was my final project created for the SheCodes Plus course. It uses live data from Open Weather Map API to fetch weather details, current and 5 day forecast, 
 
 
 ## Requirements
