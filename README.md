@@ -3,9 +3,14 @@ Vanilla javascript weather app
 https://myg-vanilla-weather-app.netlify.app/
 
 
-## TASK ##
+## Description ##
 
-A weather app with the following features:
+A weather app built using vanilla javascript. This was my final project created for the SheCodes Plus course.
+
+
+## Requirements ##
+
+This weather app needs the following features:
 
 1. Search for a city (from Open Weather Map API);
 2. Get weather details for that city such as temperature, weather description, humidity level and wind speed;
