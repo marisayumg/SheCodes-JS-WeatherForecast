@@ -1,5 +1,9 @@
-# vanilla-javascript-weather-app
+Vanilla javascript weather app
 
+https://myg-vanilla-weather-app.netlify.app/
+
+
+## TASK ##
 
 A weather app with the following features:
 
