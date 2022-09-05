@@ -1,7 +1,6 @@
 ## Vanilla Javascript Weather App
 
-Link here:
-https://myg-vanilla-weather-app.netlify.app/
+See [link here](https://myg-js-weather-app.netlify.app).
 
 
 ## Description
