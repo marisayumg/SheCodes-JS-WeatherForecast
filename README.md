@@ -15,4 +15,5 @@ This weather app has the following features:
 1. Search for a city (from Open Weather Map API);
 2. Get weather details for that city such as temperature, weather description, humidity level and wind speed;
 3. Get the weather forecast for the next 5 days;
-4. Be fully responsive.
+4. Be fully responsive;
+5. Creative feature: background changes colour depending on weather condition for that location.
